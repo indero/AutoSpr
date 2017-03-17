@@ -1,24 +1,28 @@
 package main
 
-import "fmt"
-import "regexp"
+import (
+	"fmt"
+	"regexp"
+)
 
 func main() {
-  r1 := ""
-  r2 := ""
+	regexPart := ""
+	str := ""
 
-  for i := 0; i < 29; i++ {
-    r1 += "a?"
-    r2 += "a"
-    regex := r1 + r2
-    r, err := regexp.Compile(regex)
+	for i := 0; i < 29; i++ {
+		regexPart += "a?"
+		str += "a"
+		regex := regexPart + str
 
-    if err != nil {
-      fmt.Println(err)
-    }
+		isMatch, err := regexp.MatchString(regex, str)
+		if err != nil {
+			panic(err)
+		}
 
-    if r.MatchString(r2) {
-      fmt.Println(r2 + " matches " + regex)
-    }
+		if isMatch {
+			fmt.Printf("%s matches %s\n", str, regex)
+		} else {
+			fmt.Println("matching failure")
+		}
 	}
 }
