@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
-r1 = ""
-r2 = ""
-i = 0
 
-while i < 29 do
-  i += 1
-  r1 += "a?"
-  r2 += "a"
-  r = r1 + r2
-  if r2.match(r)
-    puts "#{r2} matches #{r}"
+regex_part = ""
+string = ""
+
+29.times do
+  regex_part += "a?"
+  string += "a"
+
+  regex = "#{regex_part}#{string}"
+  if string.match?(regex)
+    puts "#{string} matches #{regex}"
   else
     puts "matching failure"
   end
